@@ -1,4 +1,4 @@
-###Angular Service Module wrapping PhoneGap Camera Native API v3.0.
+##Angular Service Module wrapping PhoneGap Camera Native API v3.0.
 
 So I have decided to re-think my approach to creating this wrapped Camera API.
 
