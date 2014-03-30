@@ -1,16 +1,16 @@
 /**
- *  Module
- *
- * Description
+ * @author: Colúm Bennett <colum.bennett@feedhenry.com>,
+ * @description: Angular Controller for Phonegap Camera Native API
  */
 
 'use strict'
 
-angular.module('camera.controllers')
-    .controller('CameraCtrl', ['$scope', 'phonegapCamera'
+angular.module('Camera.controller', [])
+    .controller('CameraCtrl', ['$scope', 'phonegapCamera',
         function($scope, phonegapCamera) {
-
+            console.debug($scope, phonegapCamera)
             $scope.takePhoto = function() {
+                console.debug()
                 phonegapCamera.getPicture()
                     .then(function(imageData) {
                         $scope.picSrc = "data:image/jpeg;base64," + imageData;
