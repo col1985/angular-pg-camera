@@ -1,4 +1,4 @@
-AngularService Module wrapping PhoneGap Camera Native API v3.0.
+Angular Service Module wrapping PhoneGap Camera Native API v3.0.
 
 Currently configured for iOS.
 

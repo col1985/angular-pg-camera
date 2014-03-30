@@ -30,20 +30,20 @@ angular.module('fhcamera', []).service("fhcamera", ['',
          * console output handler
          */
 
-        function outputHandler(type, msg, stack) {
+        function outputHandler(type, msg, obj) {
             switch (type) {
                 case "info":
                     console.info("INFO: " + msg);
                     break;
                 case "debug":
                     console.debug("DEBUG: Something is wrong!: ", msg);
-                    console.debug("DEBUG ERR STACK: \n", stack);
+                    console.debug("DEBUG ERR STACK: \n", obj);
                     break;
                 case "warn":
                     console.warn("WARNING: Something is wrong!: " + msg);
                 case "error":
                     console.error("ERR: Something is wrong!: " + msg);
-                    console.error("ERR STACK: \n", stack);
+                    console.error("ERR STACK: \n", obj);
                     break;
                 default:
                     console.log("LOG: " + msg)
@@ -60,7 +60,7 @@ angular.module('fhcamera', []).service("fhcamera", ['',
         };
 
         /**
-         *  set popOver properties, create new instance
+         * set popOver properties, create new instance
          */
 
         function setPopoverOptions(x, y, width, height, selectedArrowPos) {
@@ -81,13 +81,13 @@ angular.module('fhcamera', []).service("fhcamera", ['',
          */
 
         function onDataPhotoSuccess(imageData) {
-            setTimeout(function() {
+            $timeout(function() {
                 // do your thing here!
-                alert("Success!" + "\ndata:image/png;base64" + imageData);
+                alert("Success! " + "\ndata:image/png;base64" + imageData);
             }, 0);
-            return {
-                src: "data:image/png;base64" + imageData
-            };
+            // return {
+            //     src: "data:image/png;base64" + imageData
+            // };
         };
 
         /**
@@ -95,13 +95,13 @@ angular.module('fhcamera', []).service("fhcamera", ['',
          */
 
         function onURIPhotoSuccess(imageURI) {
-            // timeout iOS quirke
+            // timeout iOS quirk
             $timeout(function() {
                 addFileEntry(imageURI)
             }, 0);
-            return {
-                src: imageURI
-            };
+            // return {
+            //     src: imageURI
+            // };
         }
 
         // TODO: Found next 3 example on Stack OverFlow.
@@ -134,7 +134,7 @@ angular.module('fhcamera', []).service("fhcamera", ['',
 
         function onCopySuccess(entry) {
             $timeout(function() {
-                console.debug(entry.fullPath);
+                outputHandler("debug", entry.fullPath, entry);
             }, 0);
         }
 
@@ -143,7 +143,7 @@ angular.module('fhcamera', []).service("fhcamera", ['',
          */
 
         function fail(error) {
-            console.log(error.code);
+            outputHandler("error", error.code, error);
         }
 
         /**
@@ -152,6 +152,8 @@ angular.module('fhcamera', []).service("fhcamera", ['',
 
         this.capturePhoto = function(userOptions) {
             var imgOptions;
+
+            // default options
             var options = {
                 quality: 75,
                 allowEdit: true,
@@ -170,7 +172,7 @@ angular.module('fhcamera', []).service("fhcamera", ['',
             }
 
             try {
-                navigator.camera.getPicture(onURIPhotoSuccess, outputHandler, imgOptions);
+                navigator.camera.getPicture(onURIPhotoSuccess, fail, imgOptions);
             } catch (e) {
                 outputHandler("error", e.message, e);
             }
