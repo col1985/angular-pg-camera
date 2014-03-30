@@ -6,8 +6,8 @@
 
 'use strict'
 
-angular.module('camera.controllers')
-    .controller('CameraCtrl', ['$scope', 'phonegapCamera'
+angular.module('Camera')
+    .controller('CameraCtrl', ['$scope', 'phonegapCamera',
         function($scope, phonegapCamera) {
 
             $scope.takePhoto = function() {
