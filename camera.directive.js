@@ -19,7 +19,6 @@ angular.module('Camera.directive', [])
 
 
                 },
-
             };
         }
     ]);
