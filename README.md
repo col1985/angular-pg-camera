@@ -1,7 +1,9 @@
-Angular Service Module wrapping PhoneGap Camera Native API v3.0.
+###Angular Service Module wrapping PhoneGap Camera Native API v3.0.
 
-Currently configured for iOS.
+So I have decided to re-think my approach to creating this wrapped Camera API.
 
-I will update detail of module and properties later today.
+While this basically works its not suitable for my expected end result
 
-Untested at present.
+==================================================================================================================
+
+See desktop-dev branch for refactored appoarch.
