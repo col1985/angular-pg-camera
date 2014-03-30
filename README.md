@@ -1,7 +1,6 @@
-Angular Service Module wrapping PhoneGap Camera Native API v3.0.
+## Reusable Angular Module wrapping PhoneGap Camera Native API v3.0.
 
-Currently configured for iOS.
+This is my attempt at writing a Single page Angular module using the Controllers 
+and Directives rather than a service or factory module.
 
-I will update detail of module and properties later today.
-
-Untested at present.
+ 
